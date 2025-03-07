@@ -56,8 +56,7 @@ let TurnstileService = class TurnstileService {
           (0, rxjs_1.catchError)((error) => {
             if (this.options.onError) this.options.onError(error);
             throw new common_1.InternalServerErrorException(
-              'Failed turnstile verification.',
-              error,
+              `Failed turnstile verification: ${error}`,
             );
           }),
         ),

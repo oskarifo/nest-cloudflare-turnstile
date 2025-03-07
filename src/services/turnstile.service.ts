@@ -32,8 +32,7 @@ export class TurnstileService {
             if (this.options.onError) this.options.onError(error);
 
             throw new InternalServerErrorException(
-              'Failed turnstile verification.',
-              error,
+              `Failed turnstile verification: ${error}`,
             );
           }),
         ),
