@@ -43,6 +43,7 @@ let TurnstileService = class TurnstileService {
     this.BASE_URL = 'https://challenges.cloudflare.com';
   }
   async validateToken(token) {
+    console.log(token);
     const { data } = await (0, rxjs_1.firstValueFrom)(
       this.httpService
         .post(`${this.BASE_URL}/turnstile/v0/siteverify`, {
@@ -54,6 +55,7 @@ let TurnstileService = class TurnstileService {
         })
         .pipe(
           (0, rxjs_1.catchError)((error) => {
+            console.log(error);
             if (this.options.onError) this.options.onError(error);
             throw new common_1.InternalServerErrorException(
               'Failed turnstile verification.',
