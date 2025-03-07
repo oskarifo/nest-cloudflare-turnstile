@@ -11,6 +11,7 @@ export class TurnstileService {
     ) { }
 
     async validateToken(token: string) {
+        console.log(token)
         const { data } = await firstValueFrom(this.httpService.post(`${this.BASE_URL}/turnstile/v0/siteverify`, {
             response: token,
             secret: this.options.secretKey,
@@ -18,7 +19,7 @@ export class TurnstileService {
                 'content-type': 'application/x-www-form-urlencoded',
             },
         }).pipe(catchError((error) => {
-
+            console.log(error)
 
             if (this.options.onError) this.options.onError(error);
 
